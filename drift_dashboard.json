@@ -658,7 +658,7 @@
           },
           "editorMode": "builder",
           "format": "table",
-          "rawSql": "SELECT * FROM acc_table ORDER BY \"timestamp\" DESC ",
+          "rawSql": "SELECT TO_TIMESTAMP(timestamp, 'YYYY-MM-DD HH24:MI:SS') as timestamp,baseline, realtime FROM acc_table ORDER BY timestamp DESC ",
           "refId": "A",
           "sql": {
             "columns": [
