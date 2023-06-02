@@ -1,0 +1,2554 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Example python-generated dashboard",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 5,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 24,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# Title\n\nFor markdown syntax help: [commonmark.org/help](https://commonmark.org/help/)",
+        "mode": "markdown"
+      },
+      "pluginVersion": "9.5.2",
+      "title": "Prediction Distribution",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 1
+      },
+      "id": 12,
+      "options": {
+        "bucketOffset": 0,
+        "bucketSize": 0.01,
+        "combine": false,
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": false
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \"timestamp\", value \nFROM neg_score_table \nWHERE \"timestamp\" BETWEEN $__timeFrom() AND $__timeTo() \nORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "\"timestamp\"",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": [
+                  "\"timestamp\""
+                ],
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC",
+            "whereJsonTree": {
+              "children1": [
+                {
+                  "id": "baba888a-cdef-4012-b456-7188749c2f71",
+                  "properties": {
+                    "field": "\"timestamp\"",
+                    "operator": "between",
+                    "value": [
+                      null,
+                      null
+                    ],
+                    "valueSrc": [
+                      "value",
+                      null
+                    ],
+                    "valueType": [
+                      "datetime",
+                      null
+                    ]
+                  },
+                  "type": "rule"
+                },
+                {
+                  "id": "9ba89898-89ab-4cde-b012-3188749c6ffa",
+                  "properties": {
+                    "value": [],
+                    "valueSrc": []
+                  },
+                  "type": "rule"
+                }
+              ],
+              "id": "b998ab9b-89ab-4cde-b012-3188718b678d",
+              "type": "group"
+            }
+          },
+          "table": "neg_score_table"
+        }
+      ],
+      "title": "Negative Scores Distribution",
+      "transformations": [],
+      "type": "histogram"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 1
+      },
+      "id": 11,
+      "options": {
+        "bucketOffset": 0,
+        "bucketSize": 0.01,
+        "combine": false,
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": false
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \"timestamp\", value \nFROM pos_score_table \nWHERE \"timestamp\" BETWEEN $__timeFrom() AND $__timeTo() \nORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "\"timestamp\"",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "pos_score_table"
+        }
+      ],
+      "title": "Positive Scores Distribution",
+      "type": "histogram"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "yellow",
+            "mode": "fixed",
+            "seriesBy": "last"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0.2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 12,
+        "y": 1
+      },
+      "id": 28,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "SELECT * FROM psi_table ORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "psi_table"
+        }
+      ],
+      "title": "PSI",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 1
+      },
+      "id": 29,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \"timestamp\", tp AS \"TP\", fp AS \"FP\", fn AS \"FN\", tn AS \"TN\"\nFROM confusion_table\nWHERE \"timestamp\" BETWEEN $__timeFrom() AND $__timeTo()",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "\"timestamp\"",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "tp",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "fp",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "fn",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "tn",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "confusion_table"
+        }
+      ],
+      "title": "Confusion Matrix",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 25,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# Title\n\nFor markdown syntax help: [commonmark.org/help](https://commonmark.org/help/)",
+        "mode": "markdown"
+      },
+      "pluginVersion": "9.5.2",
+      "title": "Basic Performance Metrics",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 10
+      },
+      "id": 15,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "SELECT TO_TIMESTAMP(timestamp, 'YYYY-MM-DD HH24:MI:SS') as timestamp,baseline, realtime FROM acc_table ORDER BY timestamp DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "acc_table"
+        }
+      ],
+      "title": "Accuracy",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 10
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "SELECT TO_TIMESTAMP(timestamp, 'YYYY-MM-DD HH24:MI:SS') as timestamp,baseline, realtime FROM prec_table ORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "prec_table"
+        }
+      ],
+      "title": "Precision",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 12,
+        "y": 10
+      },
+      "id": 18,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "SELECT TO_TIMESTAMP(timestamp, 'YYYY-MM-DD HH24:MI:SS') as timestamp,baseline, realtime FROM rec_table ORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "rec_table"
+        }
+      ],
+      "title": "Recall",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 10
+      },
+      "id": 19,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "SELECT TO_TIMESTAMP(timestamp, 'YYYY-MM-DD HH24:MI:SS') as timestamp,baseline, realtime FROM f1_table ORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "f1_table"
+        }
+      ],
+      "title": "F1 Score",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 26,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# Title\n\nFor markdown syntax help: [commonmark.org/help](https://commonmark.org/help/)",
+        "mode": "markdown"
+      },
+      "pluginVersion": "9.5.2",
+      "title": "Advanced Metrics",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "pointSize": {
+              "fixed": 5
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "show": "points+lines"
+          },
+          "mappings": [],
+          "max": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 19
+      },
+      "id": 21,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "series": [],
+        "seriesMapping": "auto",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH filtered AS (\n    SELECT * FROM roc_fp_table WHERE \"timestamp\" BETWEEN $__timeFrom() AND $__timeTo()\n)\nSELECT '0' AS \"score\", AVG(_0) AS fpr FROM filtered\nUNION ALL\nSELECT '1', AVG(_1) FROM filtered\nUNION ALL\nSELECT '2', AVG(_2) FROM filtered\nUNION ALL\nSELECT '3', AVG(_3) FROM filtered\nUNION ALL\nSELECT '4', AVG(_4) FROM filtered\nUNION ALL\nSELECT '5', AVG(_5) FROM filtered\nUNION ALL\nSELECT '6', AVG(_6) FROM filtered\nUNION ALL\nSELECT '7', AVG(_7) FROM filtered\nUNION ALL\nSELECT '8', AVG(_8) FROM filtered\nUNION ALL\nSELECT '9', AVG(_9) FROM filtered\nUNION ALL\nSELECT '10', AVG(_10) FROM filtered\nUNION ALL\nSELECT '11', AVG(_11) FROM filtered\nUNION ALL\nSELECT '12', AVG(_12) FROM filtered\nUNION ALL\nSELECT '13', AVG(_13) FROM filtered\nUNION ALL\nSELECT '14', AVG(_14) FROM filtered\nUNION ALL\nSELECT '15', AVG(_15) FROM filtered\nUNION ALL\nSELECT '16', AVG(_16) FROM filtered\nUNION ALL\nSELECT '17', AVG(_17) FROM filtered\nUNION ALL\nSELECT '18', AVG(_18) FROM filtered\nUNION ALL\nSELECT '19', AVG(_19) FROM filtered\nUNION ALL\nSELECT '20', AVG(_20) FROM filtered\nUNION ALL\nSELECT '21', AVG(_21) FROM filtered\nUNION ALL\nSELECT '22', AVG(_22) FROM filtered\nUNION ALL\nSELECT '23', AVG(_23) FROM filtered\nUNION ALL\nSELECT '24', AVG(_24) FROM filtered\nUNION ALL\nSELECT '25', AVG(_25) FROM filtered\nUNION ALL\nSELECT '26', AVG(_26) FROM filtered\nUNION ALL\nSELECT '27', AVG(_27) FROM filtered\nUNION ALL\nSELECT '28', AVG(_28) FROM filtered\nUNION ALL\nSELECT '29', AVG(_29) FROM filtered\nUNION ALL\nSELECT '30', AVG(_30) FROM filtered\nUNION ALL\nSELECT '31', AVG(_31) FROM filtered\nUNION ALL\nSELECT '32', AVG(_32) FROM filtered\nUNION ALL\nSELECT '33', AVG(_33) FROM filtered\nUNION ALL\nSELECT '34', AVG(_34) FROM filtered\nUNION ALL\nSELECT '35', AVG(_35) FROM filtered\nUNION ALL\nSELECT '36', AVG(_36) FROM filtered\nUNION ALL\nSELECT '37', AVG(_37) FROM filtered\nUNION ALL\nSELECT '38', AVG(_38) FROM filtered\nUNION ALL\nSELECT '39', AVG(_39) FROM filtered\nUNION ALL\nSELECT '40', AVG(_40) FROM filtered\nUNION ALL\nSELECT '41', AVG(_41) FROM filtered\nUNION ALL\nSELECT '42', AVG(_42) FROM filtered\nUNION ALL\nSELECT '43', AVG(_43) FROM filtered\nUNION ALL\nSELECT '44', AVG(_44) FROM filtered\nUNION ALL\nSELECT '45', AVG(_45) FROM filtered\nUNION ALL\nSELECT '46', AVG(_46) FROM filtered\nUNION ALL\nSELECT '47', AVG(_47) FROM filtered\nUNION ALL\nSELECT '48', AVG(_48) FROM filtered\nUNION ALL\nSELECT '49', AVG(_49) FROM filtered\nUNION ALL\nSELECT '50', AVG(_50) FROM filtered\nUNION ALL\nSELECT '51', AVG(_51) FROM filtered\nUNION ALL\nSELECT '52', AVG(_52) FROM filtered\nUNION ALL\nSELECT '53', AVG(_53) FROM filtered\nUNION ALL\nSELECT '54', AVG(_54) FROM filtered\nUNION ALL\nSELECT '55', AVG(_55) FROM filtered\nUNION ALL\nSELECT '56', AVG(_56) FROM filtered\nUNION ALL\nSELECT '57', AVG(_57) FROM filtered\nUNION ALL\nSELECT '58', AVG(_58) FROM filtered\nUNION ALL\nSELECT '59', AVG(_59) FROM filtered\nUNION ALL\nSELECT '60', AVG(_60) FROM filtered\nUNION ALL\nSELECT '61', AVG(_61) FROM filtered\nUNION ALL\nSELECT '62', AVG(_62) FROM filtered\nUNION ALL\nSELECT '63', AVG(_63) FROM filtered\nUNION ALL\nSELECT '64', AVG(_64) FROM filtered\nUNION ALL\nSELECT '65', AVG(_65) FROM filtered\nUNION ALL\nSELECT '66', AVG(_66) FROM filtered\nUNION ALL\nSELECT '67', AVG(_67) FROM filtered\nUNION ALL\nSELECT '68', AVG(_68) FROM filtered\nUNION ALL\nSELECT '69', AVG(_69) FROM filtered\nUNION ALL\nSELECT '70', AVG(_70) FROM filtered\nUNION ALL\nSELECT '71', AVG(_71) FROM filtered\nUNION ALL\nSELECT '72', AVG(_72) FROM filtered\nUNION ALL\nSELECT '73', AVG(_73) FROM filtered\nUNION ALL\nSELECT '74', AVG(_74) FROM filtered\nUNION ALL\nSELECT '75', AVG(_75) FROM filtered\nUNION ALL\nSELECT '76', AVG(_76) FROM filtered\nUNION ALL\nSELECT '77', AVG(_77) FROM filtered\nUNION ALL\nSELECT '78', AVG(_78) FROM filtered\nUNION ALL\nSELECT '79', AVG(_79) FROM filtered\nUNION ALL\nSELECT '80', AVG(_80) FROM filtered\nUNION ALL\nSELECT '81', AVG(_81) FROM filtered\nUNION ALL\nSELECT '82', AVG(_82) FROM filtered\nUNION ALL\nSELECT '83', AVG(_83) FROM filtered\nUNION ALL\nSELECT '84', AVG(_84) FROM filtered\nUNION ALL\nSELECT '85', AVG(_85) FROM filtered\nUNION ALL\nSELECT '86', AVG(_86) FROM filtered\nUNION ALL\nSELECT '87', AVG(_87) FROM filtered\nUNION ALL\nSELECT '88', AVG(_88) FROM filtered\nUNION ALL\nSELECT '89', AVG(_89) FROM filtered\nUNION ALL\nSELECT '90', AVG(_90) FROM filtered\nUNION ALL\nSELECT '91', AVG(_91) FROM filtered\nUNION ALL\nSELECT '92', AVG(_92) FROM filtered\nUNION ALL\nSELECT '93', AVG(_93) FROM filtered\nUNION ALL\nSELECT '94', AVG(_94) FROM filtered\nUNION ALL\nSELECT '95', AVG(_95) FROM filtered\nUNION ALL\nSELECT '96', AVG(_96) FROM filtered\nUNION ALL\nSELECT '97', AVG(_97) FROM filtered\nUNION ALL\nSELECT '98', AVG(_98) FROM filtered\nUNION ALL\nSELECT '99', AVG(_99) FROM filtered\nUNION ALL\nSELECT '100', 0.0;\n",
+          "refId": "FPR",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "WITH filtered AS (\n    SELECT * FROM roc_tp_table WHERE \"timestamp\" BETWEEN $__timeFrom() AND $__timeTo()\n)\nSELECT '0' AS \"score\", AVG(_0) AS tpr FROM filtered\nUNION ALL\nSELECT '1', AVG(_1) FROM filtered\nUNION ALL\nSELECT '2', AVG(_2) FROM filtered\nUNION ALL\nSELECT '3', AVG(_3) FROM filtered\nUNION ALL\nSELECT '4', AVG(_4) FROM filtered\nUNION ALL\nSELECT '5', AVG(_5) FROM filtered\nUNION ALL\nSELECT '6', AVG(_6) FROM filtered\nUNION ALL\nSELECT '7', AVG(_7) FROM filtered\nUNION ALL\nSELECT '8', AVG(_8) FROM filtered\nUNION ALL\nSELECT '9', AVG(_9) FROM filtered\nUNION ALL\nSELECT '10', AVG(_10) FROM filtered\nUNION ALL\nSELECT '11', AVG(_11) FROM filtered\nUNION ALL\nSELECT '12', AVG(_12) FROM filtered\nUNION ALL\nSELECT '13', AVG(_13) FROM filtered\nUNION ALL\nSELECT '14', AVG(_14) FROM filtered\nUNION ALL\nSELECT '15', AVG(_15) FROM filtered\nUNION ALL\nSELECT '16', AVG(_16) FROM filtered\nUNION ALL\nSELECT '17', AVG(_17) FROM filtered\nUNION ALL\nSELECT '18', AVG(_18) FROM filtered\nUNION ALL\nSELECT '19', AVG(_19) FROM filtered\nUNION ALL\nSELECT '20', AVG(_20) FROM filtered\nUNION ALL\nSELECT '21', AVG(_21) FROM filtered\nUNION ALL\nSELECT '22', AVG(_22) FROM filtered\nUNION ALL\nSELECT '23', AVG(_23) FROM filtered\nUNION ALL\nSELECT '24', AVG(_24) FROM filtered\nUNION ALL\nSELECT '25', AVG(_25) FROM filtered\nUNION ALL\nSELECT '26', AVG(_26) FROM filtered\nUNION ALL\nSELECT '27', AVG(_27) FROM filtered\nUNION ALL\nSELECT '28', AVG(_28) FROM filtered\nUNION ALL\nSELECT '29', AVG(_29) FROM filtered\nUNION ALL\nSELECT '30', AVG(_30) FROM filtered\nUNION ALL\nSELECT '31', AVG(_31) FROM filtered\nUNION ALL\nSELECT '32', AVG(_32) FROM filtered\nUNION ALL\nSELECT '33', AVG(_33) FROM filtered\nUNION ALL\nSELECT '34', AVG(_34) FROM filtered\nUNION ALL\nSELECT '35', AVG(_35) FROM filtered\nUNION ALL\nSELECT '36', AVG(_36) FROM filtered\nUNION ALL\nSELECT '37', AVG(_37) FROM filtered\nUNION ALL\nSELECT '38', AVG(_38) FROM filtered\nUNION ALL\nSELECT '39', AVG(_39) FROM filtered\nUNION ALL\nSELECT '40', AVG(_40) FROM filtered\nUNION ALL\nSELECT '41', AVG(_41) FROM filtered\nUNION ALL\nSELECT '42', AVG(_42) FROM filtered\nUNION ALL\nSELECT '43', AVG(_43) FROM filtered\nUNION ALL\nSELECT '44', AVG(_44) FROM filtered\nUNION ALL\nSELECT '45', AVG(_45) FROM filtered\nUNION ALL\nSELECT '46', AVG(_46) FROM filtered\nUNION ALL\nSELECT '47', AVG(_47) FROM filtered\nUNION ALL\nSELECT '48', AVG(_48) FROM filtered\nUNION ALL\nSELECT '49', AVG(_49) FROM filtered\nUNION ALL\nSELECT '50', AVG(_50) FROM filtered\nUNION ALL\nSELECT '51', AVG(_51) FROM filtered\nUNION ALL\nSELECT '52', AVG(_52) FROM filtered\nUNION ALL\nSELECT '53', AVG(_53) FROM filtered\nUNION ALL\nSELECT '54', AVG(_54) FROM filtered\nUNION ALL\nSELECT '55', AVG(_55) FROM filtered\nUNION ALL\nSELECT '56', AVG(_56) FROM filtered\nUNION ALL\nSELECT '57', AVG(_57) FROM filtered\nUNION ALL\nSELECT '58', AVG(_58) FROM filtered\nUNION ALL\nSELECT '59', AVG(_59) FROM filtered\nUNION ALL\nSELECT '60', AVG(_60) FROM filtered\nUNION ALL\nSELECT '61', AVG(_61) FROM filtered\nUNION ALL\nSELECT '62', AVG(_62) FROM filtered\nUNION ALL\nSELECT '63', AVG(_63) FROM filtered\nUNION ALL\nSELECT '64', AVG(_64) FROM filtered\nUNION ALL\nSELECT '65', AVG(_65) FROM filtered\nUNION ALL\nSELECT '66', AVG(_66) FROM filtered\nUNION ALL\nSELECT '67', AVG(_67) FROM filtered\nUNION ALL\nSELECT '68', AVG(_68) FROM filtered\nUNION ALL\nSELECT '69', AVG(_69) FROM filtered\nUNION ALL\nSELECT '70', AVG(_70) FROM filtered\nUNION ALL\nSELECT '71', AVG(_71) FROM filtered\nUNION ALL\nSELECT '72', AVG(_72) FROM filtered\nUNION ALL\nSELECT '73', AVG(_73) FROM filtered\nUNION ALL\nSELECT '74', AVG(_74) FROM filtered\nUNION ALL\nSELECT '75', AVG(_75) FROM filtered\nUNION ALL\nSELECT '76', AVG(_76) FROM filtered\nUNION ALL\nSELECT '77', AVG(_77) FROM filtered\nUNION ALL\nSELECT '78', AVG(_78) FROM filtered\nUNION ALL\nSELECT '79', AVG(_79) FROM filtered\nUNION ALL\nSELECT '80', AVG(_80) FROM filtered\nUNION ALL\nSELECT '81', AVG(_81) FROM filtered\nUNION ALL\nSELECT '82', AVG(_82) FROM filtered\nUNION ALL\nSELECT '83', AVG(_83) FROM filtered\nUNION ALL\nSELECT '84', AVG(_84) FROM filtered\nUNION ALL\nSELECT '85', AVG(_85) FROM filtered\nUNION ALL\nSELECT '86', AVG(_86) FROM filtered\nUNION ALL\nSELECT '87', AVG(_87) FROM filtered\nUNION ALL\nSELECT '88', AVG(_88) FROM filtered\nUNION ALL\nSELECT '89', AVG(_89) FROM filtered\nUNION ALL\nSELECT '90', AVG(_90) FROM filtered\nUNION ALL\nSELECT '91', AVG(_91) FROM filtered\nUNION ALL\nSELECT '92', AVG(_92) FROM filtered\nUNION ALL\nSELECT '93', AVG(_93) FROM filtered\nUNION ALL\nSELECT '94', AVG(_94) FROM filtered\nUNION ALL\nSELECT '95', AVG(_95) FROM filtered\nUNION ALL\nSELECT '96', AVG(_96) FROM filtered\nUNION ALL\nSELECT '97', AVG(_97) FROM filtered\nUNION ALL\nSELECT '98', AVG(_98) FROM filtered\nUNION ALL\nSELECT '99', AVG(_99) FROM filtered\nUNION ALL\nSELECT '100', 0.0;\n",
+          "refId": "TPR",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "ROC Curve",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "score",
+            "mode": "outer"
+          }
+        }
+      ],
+      "type": "xychart"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 19
+      },
+      "id": 13,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "SELECT TO_TIMESTAMP(timestamp, 'YYYY-MM-DD HH24:MI:SS') as timestamp,baseline, realtime FROM auroc_table ORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "auroc_table"
+        }
+      ],
+      "title": "AUROC",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "pointSize": {
+              "fixed": 5
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "show": "points+lines"
+          },
+          "mappings": [],
+          "max": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 12,
+        "y": 19
+      },
+      "id": 30,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "series": [],
+        "seriesMapping": "auto",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH filtered AS (\n    SELECT * FROM prc_prec_table WHERE \"timestamp\" BETWEEN $__timeFrom() AND $__timeTo()\n)\nSELECT '0' AS \"score\", AVG(_0) AS tpr FROM filtered\nUNION ALL\nSELECT '1', AVG(_1) FROM filtered\nUNION ALL\nSELECT '2', AVG(_2) FROM filtered\nUNION ALL\nSELECT '3', AVG(_3) FROM filtered\nUNION ALL\nSELECT '4', AVG(_4) FROM filtered\nUNION ALL\nSELECT '5', AVG(_5) FROM filtered\nUNION ALL\nSELECT '6', AVG(_6) FROM filtered\nUNION ALL\nSELECT '7', AVG(_7) FROM filtered\nUNION ALL\nSELECT '8', AVG(_8) FROM filtered\nUNION ALL\nSELECT '9', AVG(_9) FROM filtered\nUNION ALL\nSELECT '10', AVG(_10) FROM filtered\nUNION ALL\nSELECT '11', AVG(_11) FROM filtered\nUNION ALL\nSELECT '12', AVG(_12) FROM filtered\nUNION ALL\nSELECT '13', AVG(_13) FROM filtered\nUNION ALL\nSELECT '14', AVG(_14) FROM filtered\nUNION ALL\nSELECT '15', AVG(_15) FROM filtered\nUNION ALL\nSELECT '16', AVG(_16) FROM filtered\nUNION ALL\nSELECT '17', AVG(_17) FROM filtered\nUNION ALL\nSELECT '18', AVG(_18) FROM filtered\nUNION ALL\nSELECT '19', AVG(_19) FROM filtered\nUNION ALL\nSELECT '20', AVG(_20) FROM filtered\nUNION ALL\nSELECT '21', AVG(_21) FROM filtered\nUNION ALL\nSELECT '22', AVG(_22) FROM filtered\nUNION ALL\nSELECT '23', AVG(_23) FROM filtered\nUNION ALL\nSELECT '24', AVG(_24) FROM filtered\nUNION ALL\nSELECT '25', AVG(_25) FROM filtered\nUNION ALL\nSELECT '26', AVG(_26) FROM filtered\nUNION ALL\nSELECT '27', AVG(_27) FROM filtered\nUNION ALL\nSELECT '28', AVG(_28) FROM filtered\nUNION ALL\nSELECT '29', AVG(_29) FROM filtered\nUNION ALL\nSELECT '30', AVG(_30) FROM filtered\nUNION ALL\nSELECT '31', AVG(_31) FROM filtered\nUNION ALL\nSELECT '32', AVG(_32) FROM filtered\nUNION ALL\nSELECT '33', AVG(_33) FROM filtered\nUNION ALL\nSELECT '34', AVG(_34) FROM filtered\nUNION ALL\nSELECT '35', AVG(_35) FROM filtered\nUNION ALL\nSELECT '36', AVG(_36) FROM filtered\nUNION ALL\nSELECT '37', AVG(_37) FROM filtered\nUNION ALL\nSELECT '38', AVG(_38) FROM filtered\nUNION ALL\nSELECT '39', AVG(_39) FROM filtered\nUNION ALL\nSELECT '40', AVG(_40) FROM filtered\nUNION ALL\nSELECT '41', AVG(_41) FROM filtered\nUNION ALL\nSELECT '42', AVG(_42) FROM filtered\nUNION ALL\nSELECT '43', AVG(_43) FROM filtered\nUNION ALL\nSELECT '44', AVG(_44) FROM filtered\nUNION ALL\nSELECT '45', AVG(_45) FROM filtered\nUNION ALL\nSELECT '46', AVG(_46) FROM filtered\nUNION ALL\nSELECT '47', AVG(_47) FROM filtered\nUNION ALL\nSELECT '48', AVG(_48) FROM filtered\nUNION ALL\nSELECT '49', AVG(_49) FROM filtered\nUNION ALL\nSELECT '50', AVG(_50) FROM filtered\nUNION ALL\nSELECT '51', AVG(_51) FROM filtered\nUNION ALL\nSELECT '52', AVG(_52) FROM filtered\nUNION ALL\nSELECT '53', AVG(_53) FROM filtered\nUNION ALL\nSELECT '54', AVG(_54) FROM filtered\nUNION ALL\nSELECT '55', AVG(_55) FROM filtered\nUNION ALL\nSELECT '56', AVG(_56) FROM filtered\nUNION ALL\nSELECT '57', AVG(_57) FROM filtered\nUNION ALL\nSELECT '58', AVG(_58) FROM filtered\nUNION ALL\nSELECT '59', AVG(_59) FROM filtered\nUNION ALL\nSELECT '60', AVG(_60) FROM filtered\nUNION ALL\nSELECT '61', AVG(_61) FROM filtered\nUNION ALL\nSELECT '62', AVG(_62) FROM filtered\nUNION ALL\nSELECT '63', AVG(_63) FROM filtered\nUNION ALL\nSELECT '64', AVG(_64) FROM filtered\nUNION ALL\nSELECT '65', AVG(_65) FROM filtered\nUNION ALL\nSELECT '66', AVG(_66) FROM filtered\nUNION ALL\nSELECT '67', AVG(_67) FROM filtered\nUNION ALL\nSELECT '68', AVG(_68) FROM filtered\nUNION ALL\nSELECT '69', AVG(_69) FROM filtered\nUNION ALL\nSELECT '70', AVG(_70) FROM filtered\nUNION ALL\nSELECT '71', AVG(_71) FROM filtered\nUNION ALL\nSELECT '72', AVG(_72) FROM filtered\nUNION ALL\nSELECT '73', AVG(_73) FROM filtered\nUNION ALL\nSELECT '74', AVG(_74) FROM filtered\nUNION ALL\nSELECT '75', AVG(_75) FROM filtered\nUNION ALL\nSELECT '76', AVG(_76) FROM filtered\nUNION ALL\nSELECT '77', AVG(_77) FROM filtered\nUNION ALL\nSELECT '78', AVG(_78) FROM filtered\nUNION ALL\nSELECT '79', AVG(_79) FROM filtered\nUNION ALL\nSELECT '80', AVG(_80) FROM filtered\nUNION ALL\nSELECT '81', AVG(_81) FROM filtered\nUNION ALL\nSELECT '82', AVG(_82) FROM filtered\nUNION ALL\nSELECT '83', AVG(_83) FROM filtered\nUNION ALL\nSELECT '84', AVG(_84) FROM filtered\nUNION ALL\nSELECT '85', AVG(_85) FROM filtered\nUNION ALL\nSELECT '86', AVG(_86) FROM filtered\nUNION ALL\nSELECT '87', AVG(_87) FROM filtered\nUNION ALL\nSELECT '88', AVG(_88) FROM filtered\nUNION ALL\nSELECT '89', AVG(_89) FROM filtered\nUNION ALL\nSELECT '90', AVG(_90) FROM filtered\nUNION ALL\nSELECT '91', AVG(_91) FROM filtered\nUNION ALL\nSELECT '92', AVG(_92) FROM filtered\nUNION ALL\nSELECT '93', AVG(_93) FROM filtered\nUNION ALL\nSELECT '94', AVG(_94) FROM filtered\nUNION ALL\nSELECT '95', AVG(_95) FROM filtered\nUNION ALL\nSELECT '96', AVG(_96) FROM filtered\nUNION ALL\nSELECT '97', AVG(_97) FROM filtered\nUNION ALL\nSELECT '98', AVG(_98) FROM filtered\nUNION ALL\nSELECT '99', AVG(_99) FROM filtered\nUNION ALL\nSELECT '100', 1.0;\n",
+          "refId": "Precision",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "WITH filtered AS (\n    SELECT * FROM prc_rec_table WHERE \"timestamp\" BETWEEN $__timeFrom() AND $__timeTo()\n)\nSELECT '0' AS \"score\", AVG(_0) AS tpr FROM filtered\nUNION ALL\nSELECT '1', AVG(_1) FROM filtered\nUNION ALL\nSELECT '2', AVG(_2) FROM filtered\nUNION ALL\nSELECT '3', AVG(_3) FROM filtered\nUNION ALL\nSELECT '4', AVG(_4) FROM filtered\nUNION ALL\nSELECT '5', AVG(_5) FROM filtered\nUNION ALL\nSELECT '6', AVG(_6) FROM filtered\nUNION ALL\nSELECT '7', AVG(_7) FROM filtered\nUNION ALL\nSELECT '8', AVG(_8) FROM filtered\nUNION ALL\nSELECT '9', AVG(_9) FROM filtered\nUNION ALL\nSELECT '10', AVG(_10) FROM filtered\nUNION ALL\nSELECT '11', AVG(_11) FROM filtered\nUNION ALL\nSELECT '12', AVG(_12) FROM filtered\nUNION ALL\nSELECT '13', AVG(_13) FROM filtered\nUNION ALL\nSELECT '14', AVG(_14) FROM filtered\nUNION ALL\nSELECT '15', AVG(_15) FROM filtered\nUNION ALL\nSELECT '16', AVG(_16) FROM filtered\nUNION ALL\nSELECT '17', AVG(_17) FROM filtered\nUNION ALL\nSELECT '18', AVG(_18) FROM filtered\nUNION ALL\nSELECT '19', AVG(_19) FROM filtered\nUNION ALL\nSELECT '20', AVG(_20) FROM filtered\nUNION ALL\nSELECT '21', AVG(_21) FROM filtered\nUNION ALL\nSELECT '22', AVG(_22) FROM filtered\nUNION ALL\nSELECT '23', AVG(_23) FROM filtered\nUNION ALL\nSELECT '24', AVG(_24) FROM filtered\nUNION ALL\nSELECT '25', AVG(_25) FROM filtered\nUNION ALL\nSELECT '26', AVG(_26) FROM filtered\nUNION ALL\nSELECT '27', AVG(_27) FROM filtered\nUNION ALL\nSELECT '28', AVG(_28) FROM filtered\nUNION ALL\nSELECT '29', AVG(_29) FROM filtered\nUNION ALL\nSELECT '30', AVG(_30) FROM filtered\nUNION ALL\nSELECT '31', AVG(_31) FROM filtered\nUNION ALL\nSELECT '32', AVG(_32) FROM filtered\nUNION ALL\nSELECT '33', AVG(_33) FROM filtered\nUNION ALL\nSELECT '34', AVG(_34) FROM filtered\nUNION ALL\nSELECT '35', AVG(_35) FROM filtered\nUNION ALL\nSELECT '36', AVG(_36) FROM filtered\nUNION ALL\nSELECT '37', AVG(_37) FROM filtered\nUNION ALL\nSELECT '38', AVG(_38) FROM filtered\nUNION ALL\nSELECT '39', AVG(_39) FROM filtered\nUNION ALL\nSELECT '40', AVG(_40) FROM filtered\nUNION ALL\nSELECT '41', AVG(_41) FROM filtered\nUNION ALL\nSELECT '42', AVG(_42) FROM filtered\nUNION ALL\nSELECT '43', AVG(_43) FROM filtered\nUNION ALL\nSELECT '44', AVG(_44) FROM filtered\nUNION ALL\nSELECT '45', AVG(_45) FROM filtered\nUNION ALL\nSELECT '46', AVG(_46) FROM filtered\nUNION ALL\nSELECT '47', AVG(_47) FROM filtered\nUNION ALL\nSELECT '48', AVG(_48) FROM filtered\nUNION ALL\nSELECT '49', AVG(_49) FROM filtered\nUNION ALL\nSELECT '50', AVG(_50) FROM filtered\nUNION ALL\nSELECT '51', AVG(_51) FROM filtered\nUNION ALL\nSELECT '52', AVG(_52) FROM filtered\nUNION ALL\nSELECT '53', AVG(_53) FROM filtered\nUNION ALL\nSELECT '54', AVG(_54) FROM filtered\nUNION ALL\nSELECT '55', AVG(_55) FROM filtered\nUNION ALL\nSELECT '56', AVG(_56) FROM filtered\nUNION ALL\nSELECT '57', AVG(_57) FROM filtered\nUNION ALL\nSELECT '58', AVG(_58) FROM filtered\nUNION ALL\nSELECT '59', AVG(_59) FROM filtered\nUNION ALL\nSELECT '60', AVG(_60) FROM filtered\nUNION ALL\nSELECT '61', AVG(_61) FROM filtered\nUNION ALL\nSELECT '62', AVG(_62) FROM filtered\nUNION ALL\nSELECT '63', AVG(_63) FROM filtered\nUNION ALL\nSELECT '64', AVG(_64) FROM filtered\nUNION ALL\nSELECT '65', AVG(_65) FROM filtered\nUNION ALL\nSELECT '66', AVG(_66) FROM filtered\nUNION ALL\nSELECT '67', AVG(_67) FROM filtered\nUNION ALL\nSELECT '68', AVG(_68) FROM filtered\nUNION ALL\nSELECT '69', AVG(_69) FROM filtered\nUNION ALL\nSELECT '70', AVG(_70) FROM filtered\nUNION ALL\nSELECT '71', AVG(_71) FROM filtered\nUNION ALL\nSELECT '72', AVG(_72) FROM filtered\nUNION ALL\nSELECT '73', AVG(_73) FROM filtered\nUNION ALL\nSELECT '74', AVG(_74) FROM filtered\nUNION ALL\nSELECT '75', AVG(_75) FROM filtered\nUNION ALL\nSELECT '76', AVG(_76) FROM filtered\nUNION ALL\nSELECT '77', AVG(_77) FROM filtered\nUNION ALL\nSELECT '78', AVG(_78) FROM filtered\nUNION ALL\nSELECT '79', AVG(_79) FROM filtered\nUNION ALL\nSELECT '80', AVG(_80) FROM filtered\nUNION ALL\nSELECT '81', AVG(_81) FROM filtered\nUNION ALL\nSELECT '82', AVG(_82) FROM filtered\nUNION ALL\nSELECT '83', AVG(_83) FROM filtered\nUNION ALL\nSELECT '84', AVG(_84) FROM filtered\nUNION ALL\nSELECT '85', AVG(_85) FROM filtered\nUNION ALL\nSELECT '86', AVG(_86) FROM filtered\nUNION ALL\nSELECT '87', AVG(_87) FROM filtered\nUNION ALL\nSELECT '88', AVG(_88) FROM filtered\nUNION ALL\nSELECT '89', AVG(_89) FROM filtered\nUNION ALL\nSELECT '90', AVG(_90) FROM filtered\nUNION ALL\nSELECT '91', AVG(_91) FROM filtered\nUNION ALL\nSELECT '92', AVG(_92) FROM filtered\nUNION ALL\nSELECT '93', AVG(_93) FROM filtered\nUNION ALL\nSELECT '94', AVG(_94) FROM filtered\nUNION ALL\nSELECT '95', AVG(_95) FROM filtered\nUNION ALL\nSELECT '96', AVG(_96) FROM filtered\nUNION ALL\nSELECT '97', AVG(_97) FROM filtered\nUNION ALL\nSELECT '98', AVG(_98) FROM filtered\nUNION ALL\nSELECT '99', AVG(_99) FROM filtered\nUNION ALL\nSELECT '100', 0.0;\n",
+          "refId": "Recall",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "PR Curve",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "score",
+            "mode": "outer"
+          }
+        }
+      ],
+      "type": "xychart"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 19
+      },
+      "id": 17,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "SELECT TO_TIMESTAMP(timestamp, 'YYYY-MM-DD HH24:MI:SS') as timestamp,baseline, realtime FROM auprc_table ORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "auprc_table"
+        }
+      ],
+      "title": "AUPRC",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 27
+      },
+      "id": 2,
+      "interval": "1h",
+      "maxDataPoints": 10000,
+      "options": {
+        "calculate": false,
+        "cellGap": 1,
+        "color": {
+          "exponent": 0.5,
+          "fill": "dark-red",
+          "max": 1,
+          "min": 0,
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Inferno",
+          "steps": 64
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": false
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT * FROM roc_tp_table ORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "roc_tp_table"
+        }
+      ],
+      "title": "TPR / Recall on Thresholds",
+      "transformations": [],
+      "type": "heatmap"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 27
+      },
+      "id": 5,
+      "interval": "1h",
+      "maxDataPoints": 10000,
+      "options": {
+        "calculate": false,
+        "cellGap": 1,
+        "color": {
+          "exponent": 0.5,
+          "fill": "#C4162A",
+          "max": 0,
+          "min": -0.25,
+          "mode": "scheme",
+          "reverse": true,
+          "scale": "exponential",
+          "scheme": "RdYlGn",
+          "steps": 10
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "ge": 1,
+          "le": -1
+        },
+        "legend": {
+          "show": false
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT * FROM roc_tp_diff_table ORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "roc_tp_diff_table"
+        }
+      ],
+      "title": "TPR / Recall Gain",
+      "type": "heatmap"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 35
+      },
+      "id": 4,
+      "interval": "1h",
+      "maxDataPoints": 10000,
+      "options": {
+        "calculate": false,
+        "cellGap": 1,
+        "color": {
+          "exponent": 0.5,
+          "fill": "dark-red",
+          "max": 1,
+          "min": 0,
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Inferno",
+          "steps": 64
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "ge": 1,
+          "le": -1
+        },
+        "legend": {
+          "show": false
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "decimals": 0,
+          "reverse": false
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT * FROM roc_fp_table ORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "roc_fp_table"
+        }
+      ],
+      "title": "FPR on Thresholds",
+      "transformations": [],
+      "type": "heatmap"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 35
+      },
+      "id": 6,
+      "interval": "1h",
+      "maxDataPoints": 10000,
+      "options": {
+        "calculate": false,
+        "cellGap": 1,
+        "color": {
+          "exponent": 0.5,
+          "fill": "dark-red",
+          "max": 0.5,
+          "min": -0.4,
+          "mode": "scheme",
+          "reverse": true,
+          "scale": "exponential",
+          "scheme": "RdYlGn",
+          "steps": 10
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "ge": 1,
+          "le": -1
+        },
+        "legend": {
+          "show": false
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "decimals": 0,
+          "reverse": false
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT * FROM roc_fp_diff_table ORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "roc_fp_diff_table"
+        }
+      ],
+      "title": "FPR Gain",
+      "transformations": [],
+      "type": "heatmap"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 43
+      },
+      "id": 7,
+      "interval": "1h",
+      "maxDataPoints": 10000,
+      "options": {
+        "calculate": false,
+        "cellGap": 1,
+        "color": {
+          "exponent": 0.5,
+          "fill": "dark-red",
+          "max": 1,
+          "min": 0,
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Inferno",
+          "steps": 64
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": false
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "decimals": 0,
+          "reverse": false
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT * FROM prc_prec_table ORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "prc_prec_table"
+        }
+      ],
+      "title": "Precision on Thresholds",
+      "transformations": [],
+      "type": "heatmap"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 43
+      },
+      "id": 8,
+      "interval": "1h",
+      "maxDataPoints": 10000,
+      "options": {
+        "calculate": false,
+        "cellGap": 1,
+        "color": {
+          "exponent": 0.5,
+          "fill": "dark-red",
+          "max": 0,
+          "min": -0.25,
+          "mode": "scheme",
+          "reverse": true,
+          "scale": "exponential",
+          "scheme": "RdYlGn",
+          "steps": 10
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "ge": 1,
+          "le": -1
+        },
+        "legend": {
+          "show": false
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "decimals": 0,
+          "reverse": false
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT * FROM prc_prec_diff_table ORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "prc_prec_diff_table"
+        }
+      ],
+      "title": "Precision Gain",
+      "transformations": [],
+      "type": "heatmap"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 51
+      },
+      "id": 9,
+      "interval": "1h",
+      "maxDataPoints": 10000,
+      "options": {
+        "calculate": false,
+        "cellGap": 1,
+        "color": {
+          "exponent": 0.5,
+          "fill": "dark-red",
+          "min": 1,
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Inferno",
+          "steps": 64
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": false
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "decimals": 0,
+          "reverse": false
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT * FROM lift_table ORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "lift_table"
+        }
+      ],
+      "title": "Lift",
+      "transformations": [],
+      "type": "heatmap"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 51
+      },
+      "id": 10,
+      "interval": "1h",
+      "maxDataPoints": 10000,
+      "options": {
+        "calculate": false,
+        "cellGap": 1,
+        "color": {
+          "exponent": 0.5,
+          "fill": "dark-red",
+          "max": 0,
+          "mode": "scheme",
+          "reverse": true,
+          "scale": "exponential",
+          "scheme": "RdYlGn",
+          "steps": 10
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "ge": 1,
+          "le": -1
+        },
+        "legend": {
+          "show": false
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "decimals": 0,
+          "reverse": false
+        }
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "a840d58c-5e77-4f44-adbc-30033cb46467"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT * FROM lift_diff_table ORDER BY \"timestamp\" DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "\"timestamp\"",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "lift_diff_table"
+        }
+      ],
+      "title": "Lift Gain",
+      "transformations": [],
+      "type": "heatmap"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "example"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-72h",
+    "to": "now-12h"
+  },
+  "timepicker": {
+    "hidden": false,
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Drift Monitoring",
+  "uid": "a8a0aca8-6037-4a8e-8e92-9fa889c23c25",
+  "version": 36,
+  "weekStart": ""
+}
